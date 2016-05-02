@@ -2,7 +2,10 @@
 import sys
 import logging
 
-from mattermost_bot import bot, settings
+import bot, settings
+
+from plugins.queryable import QueryableManager
+
 
 
 def main():
@@ -14,7 +17,11 @@ def main():
     })
 
     try:
+        QueryableManager.settings = settings.DATASOURCE_SETTINGS
         b = bot.Bot()
         b.run()
     except KeyboardInterrupt:
         pass
+
+if __name__ == "__main__":
+    main()

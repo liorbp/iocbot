@@ -5,14 +5,47 @@ import os
 DEBUG = False
 
 PLUGINS = [
-    'mattermost_bot.plugins',
+    'plugins',
 ]
 PLUGINS_ONLY_DOC_STRING = False
 
-BOT_URL = 'http://mm.example.com/api/v1'
-BOT_LOGIN = 'bot@example.com'
-BOT_PASSWORD = None
-BOT_TEAM = 'devops'
+BOT_URL = 'http://localhost:8065/api/v1'
+BOT_LOGIN = 'bot@rsa.com'
+BOT_PASSWORD = 'iocbot'
+BOT_TEAM = 'lior'
+
+DATASOURCE_SETTINGS = {
+    'vtpriv': {
+        'api_key': 'vt_apikey',
+        'max_results': 50,
+    },
+    'vtpub': {
+        'api_key': 'vt_apikey',
+        'max_results': 25,      # Use low value to avoid large responses that cause
+                                # the bot to lose connection with the server
+    },
+    'atsinc': {
+        'user': 'atsinc_user',
+        'pass': 'atsinc_pass',
+        'host': 'atsinc_ip',
+        'db':   'atsinc_db',
+        'table': 'atsinc_table',
+        'max_results': 50,
+    },
+    'sparta': {
+        'user': 'sparta_user',
+        'pass': 'sparta_pass',
+        'url':  'sparta_url',
+        'max_results': 50,
+    },
+    'portal': {
+        'host_ip': 'ip',
+        'host_port': 'port',
+        'token': 'fwporta_token',
+        'max_results': 50,
+    }
+}
+
 
 IGNORE_NOTIFIES = ['@channel', '@all']
 WORKERS_NUM = 10

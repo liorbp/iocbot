@@ -9,8 +9,8 @@ import re
 
 from six import iteritems
 
-from mattermost_bot.utils import WorkerPool
-from mattermost_bot import settings
+from utils import WorkerPool
+import settings
 
 logger = logging.getLogger(__name__)
 
@@ -126,7 +126,7 @@ class Message(object):
     channels = {}
 
     def __init__(self, client, body, pool):
-        from mattermost_bot.bot import PluginsManager
+        from bot import PluginsManager
 
         self._plugins = PluginsManager()
         self._client = client
@@ -234,3 +234,14 @@ class Message(object):
     @property
     def body(self):
         return self._body
+
+    # Added by beepi
+    def get_username_by_id(self, id):
+        try:
+            return self.users[id]['username']
+        except KeyError:
+            return None
+
+    # Added by beepi
+    def get_sender_name(self):
+        return self.get_username_by_id(self.get_user_id())

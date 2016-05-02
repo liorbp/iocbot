@@ -1,3 +1,4 @@
+Copyright (C) 2016 Lior Ben-Porat
 Copyright (C) 2016 MatterMostBot Contributors
 Copyright (C) 2015 Slackbot Contributors
 
