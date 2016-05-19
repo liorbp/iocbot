@@ -33,6 +33,10 @@ class PrivateVTQueryable(Queryable):
             params = {'apikey': self.settings['api_key'], 'resource': ','.join(hashes_list)}
             response = requests.get('https://www.virustotal.com/vtapi/v2/file/report', params=params)
             json_response = response.json()
+            
+            # When searching for hash only, verify it exists first
+            if response_json['response_code'] <= 0 :
+                return None
 
             # If one result returned - put it in a list
             if isinstance(json_response, dict):
