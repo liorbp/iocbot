@@ -84,15 +84,15 @@ class BotCommands(object):
         ip = re.match(r'^((?:[0-9]{1,3}\.){3}[0-9]{1,3})$', ioc)
 
         if domain:
-            phrase = QueryPhrase(domain.group(1), QueryPhrase.TYPE_DOMAIN)
+            phrase = QueryPhrase(domain.group(0), QueryPhrase.TYPE_DOMAIN)
         elif url:
-            phrase = QueryPhrase(url.group(1), QueryPhrase.TYPE_URL)
+            phrase = QueryPhrase(url.group(0), QueryPhrase.TYPE_URL)
         elif mail:
-            phrase = QueryPhrase(mail.group(1), QueryPhrase.TYPE_MAIL)
+            phrase = QueryPhrase(mail.group(0), QueryPhrase.TYPE_MAIL)
         elif hash:
-            phrase = QueryPhrase(hash.group(1), QueryPhrase.TYPE_HASH)
+            phrase = QueryPhrase(hash.group(0), QueryPhrase.TYPE_HASH)
         elif ip:
-            phrase = QueryPhrase(ip.group(1), QueryPhrase.TYPE_IP)
+            phrase = QueryPhrase(ip.group(0), QueryPhrase.TYPE_IP)
         else:
             message.reply('Input data must be a valid URL/Domain/E-mail/Hash/IP')
             return
